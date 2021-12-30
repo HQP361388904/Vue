@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最原始的开发模式：CDN版Vue程序</title>
+  <style>
+    .text-delete {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- mustaches语法解析表达式 -->
+    {{ message }}
+    <!--
+      指令：标志位，Vue底层根据该标记做相应处理。
+      v-bind/:, v-if, v-else, v-show, v-for, v-on/@ 
+    -->
+    <div :id="message"></div>
+    <ul>
+      <li v-for="(item, index) in list" :key="index">
+        <span v-if="!item.done">{{ item.title }}</span>
+        <span v-else class="text-delete">{{ item.title }}</span>
+        <button v-show="!item.done" @click="executeDone(item)">完成</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 2.x版本 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // CDN引入，Vue为全局变量
+    var vm = new Vue({ // new一个Vue实例
+      el: '#app', // 指定DOM节点作为Vue实例的挂载目标
+      data: { // 根实例，不存在复用，简单对象即可。
+        message: 'Hello 2022',
+        // item: {
+        //   title: '课程1',
+        //   done: false,
+        // },
+        list: [
+          {
+            title: '第一个Vue程序',
+            done: true,
+          },
+          {
+            title: 'CDN版Vue项目开发模板封装',
+            done: false,
+          }
+        ],
+      },
+      methods: {
+        // 完成
+        executeDone(item) {
+          item.done = true;
+        },
+      },
+    });
+  </script>
+</body>
+</html>
