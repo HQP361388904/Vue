@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue开发最原始的模板：CDN版</title>
+</head>
+
+<body>
+  <!-- Vue实例挂载目标 -->
+  <div id="app">
+    <!-- your content here... -->
+  </div>
+
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // Vue实例
+    var vm = new Vue({
+      el: '#app', // 指定DOM节点作为Vue实例的挂载目标
+      data: { // 根实例，不存在复用，简单对象即可。
+        // your data here...
+      },
+      methods: {
+        // your methods here...
+      },
+      // others...
+    });
+  </script>
+</body>
+</html>
